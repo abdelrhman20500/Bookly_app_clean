@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'custom_app_bar.dart';
+import 'featured_books_list_bok.dart';
 
 class HomeScreenBody extends StatelessWidget {
   const HomeScreenBody({super.key});
@@ -10,7 +10,9 @@ class HomeScreenBody extends StatelessWidget {
     return const Column(
       children: [
         CustomAppBar(),
+        FeaturedBooksListView(),
       ],
     );
   }
 }
+

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../Core/utils/assets.dart';
+import '../../../../search/presentation/view/search_screen.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key});
@@ -13,7 +14,10 @@ class CustomAppBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Image.asset(Assets.logo, height: 50, width: 100,),
-          IconButton(onPressed: (){}, icon: const Icon(Icons.search,
+          IconButton(onPressed: ()
+          {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>const SearchScreen()));
+          }, icon: const Icon(Icons.search,
             size: 32, color: Colors.white,))
         ],
       ),

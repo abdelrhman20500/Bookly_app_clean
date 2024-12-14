@@ -13,7 +13,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData().copyWith(scaffoldBackgroundColor: kPrimaryColor,),
+      theme: ThemeData().copyWith(scaffoldBackgroundColor: kPrimaryColor,
+      appBarTheme: const AppBarTheme(color: kPrimaryColor)),
       home: const SplashScreen(),
     );
   }

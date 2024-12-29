@@ -19,6 +19,14 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDateSource{
     return books;
   }
 
+  @override
+  Future<List<BookEntity>> fetchNewestBooks() async{
+    var data = await apiService.get(endpoint: "volumes?Filtering=free-ebooks&q=programming&Sorting=newest");
+    List<BookEntity> books = getBookList(data);
+    return books;
+  }
+
+
   /// Refactor Method...
   List<BookEntity> getBookList(Map<String, dynamic> data) {
     List<BookEntity> books =[];
@@ -27,11 +35,4 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDateSource{
     }
     return books;
   }
-
-  @override
-  Future<List<BookEntity>> fetchNewestBooks() {
-    // TODO: implement fetchNewestBooks
-    throw UnimplementedError();
-  }
-
 }

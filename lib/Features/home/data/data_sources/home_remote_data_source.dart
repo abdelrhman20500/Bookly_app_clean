@@ -29,6 +29,9 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDateSource{
   Future<List<BookEntity>> fetchNewestBooks() async{
     var data = await apiService.get(endpoint: "volumes?Filtering=free-ebooks&q=programming&Sorting=newest");
     List<BookEntity> books = getBookList(data);
+    /// you stored data in hive to used in local data source after fetch data ..
+    saveBooksData(books, kNewestBox);
+
     return books;
   }
 

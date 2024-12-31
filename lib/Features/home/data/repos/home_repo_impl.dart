@@ -17,11 +17,12 @@ class HomeRepoImpl extends HomeRepo {
     /// first i check this data already find or not find
     /// if data is find i want to use local data source if not i want to use remote data source..
     try {
-      var bookList = homeLocalDataSource.fetchFeaturedBooks();
-      if (bookList.isNotEmpty) {
-        return right(bookList);
+      List<BookEntity> books;
+      books= homeLocalDataSource.fetchFeaturedBooks();
+      if (books.isNotEmpty) {
+        return right(books);
       }
-      var books = await homeRemoteDateSource.fetchFeaturedBooks();
+      books = await homeRemoteDateSource.fetchFeaturedBooks();
       return right(books);
     } catch (e) {
       return left(Failure());
@@ -31,11 +32,12 @@ class HomeRepoImpl extends HomeRepo {
   @override
   Future<Either<Failure, List<BookEntity>>> fetchNewestBooks() async {
     try {
-      var bookList = homeLocalDataSource.fetchNewestBooks();
-      if (bookList.isNotEmpty) {
-        return right(bookList);
+      List<BookEntity> books;
+      books= homeLocalDataSource.fetchNewestBooks();
+      if (books.isNotEmpty) {
+        return right(books);
       }
-      var books = await homeRemoteDateSource.fetchNewestBooks();
+      books = await homeRemoteDateSource.fetchNewestBooks();
       return right(books);
     } catch (e) {
       return left(Failure());

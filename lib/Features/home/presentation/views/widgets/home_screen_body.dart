@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../Core/utils/styles.dart';
 import 'best_seller_list_view.dart';
 import 'custom_app_bar.dart';
-import 'featured_books_list_bok.dart';
+import 'featured_books_list_view.dart';
+import 'featured_books_list_view_bloc_builder.dart';
 
 class HomeScreenBody extends StatelessWidget {
   const HomeScreenBody({super.key});
@@ -17,7 +19,7 @@ class HomeScreenBody extends StatelessWidget {
               child: Column(
                 children: [
                   const CustomAppBar(),
-                  const FeaturedBooksListView(),
+                   const FeaturedBooksListViewBlocBuilder(),
                   SizedBox(height: MediaQuery.of(context).size.height*0.02,),
                   const Align(
                       alignment: Alignment.topLeft,
@@ -39,4 +41,5 @@ class HomeScreenBody extends StatelessWidget {
     );
   }
 }
+
 

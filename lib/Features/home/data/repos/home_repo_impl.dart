@@ -13,17 +13,19 @@ class HomeRepoImpl extends HomeRepo {
   HomeRepoImpl(
       {required this.homeRemoteDateSource, required this.homeLocalDataSource});
   @override
-  Future<Either<Failure, List<BookEntity>>> fetchFeaturedBooks() async {
+  Future<Either<Failure, List<BookEntity>>> fetchFeaturedBooks({int pageNumber=0}) async {
     /// fetch data...
     /// first i check this data already find or not find
     /// if data is find i want to use local data source if not i want to use remote data source..
     try {
       List<BookEntity> books;
-      books= homeLocalDataSource.fetchFeaturedBooks();
+      books= homeLocalDataSource.fetchFeaturedBooks(
+        pageNumber: pageNumber
+      );
       if (books.isNotEmpty) {
         return right(books);
       }
-      books = await homeRemoteDateSource.fetchFeaturedBooks();
+      books = await homeRemoteDateSource.fetchFeaturedBooks(pageNumber: pageNumber);
       return right(books);
     } catch(e) {
       if(e is DioException )

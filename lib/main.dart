@@ -3,6 +3,7 @@ import 'package:bookly_app_clean/Features/home/data/repos/home_repo_impl.dart';
 import 'package:bookly_app_clean/Features/home/domain/entities/book_entity.dart';
 import 'package:bookly_app_clean/Features/home/domain/use_cases/fetch_featured_books_use_case.dart';
 import 'package:bookly_app_clean/Features/home/presentation/manager/fetch_feature_books_cubit/featured_books_cubit.dart';
+import 'package:bookly_app_clean/Features/home/presentation/views/home_screen.dart';
 import 'package:bookly_app_clean/Features/splash/presentation/views/splash_screen.dart';
 import 'package:bookly_app_clean/constants.dart';
 import 'package:flutter/material.dart';
@@ -34,16 +35,16 @@ class MyApp extends StatelessWidget {
             FeaturedBooksCubit(FetchFeaturedBooksUseCase(
             getIt.get<HomeRepoImpl>()),
             )..fetchFeaturedBooks(),),
-        BlocProvider(create: (context) =>
-            NewestBooksCubit(FetchNewestBooksUseCase(
-                getIt.get<HomeRepoImpl>()),
-            ),),
+       BlocProvider(create: (context) =>
+         NewestBooksCubit(FetchNewestBooksUseCase(
+           getIt.get<HomeRepoImpl>()),
+         )..fetchNewestBooks())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData().copyWith(scaffoldBackgroundColor: kPrimaryColor,
         appBarTheme: const AppBarTheme(color: kPrimaryColor)),
-        home: const SplashScreen(),
+        home: const HomeScreen(),
       ),
     );
   }

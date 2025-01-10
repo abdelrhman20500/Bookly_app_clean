@@ -3,24 +3,19 @@ import 'package:bookly_app_clean/Features/home/presentation/views/book_details_s
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-class BestSellerListViewItem extends StatelessWidget {
-  const BestSellerListViewItem({super.key, required this.image,
-    required this.title, required this.authorName, required this.price,
-    required this.rating});
+import '../../../domain/entities/book_entity.dart';
 
-  final String image;
-  final String title;
-  final String authorName;
-  final num price;
-  final num rating;
+class BestSellerListViewItem extends StatelessWidget {
+  const BestSellerListViewItem({super.key, required this.book,});
+  final BookEntity book;
+
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
         Navigator.push(context, MaterialPageRoute(
-            builder: (context)=>BookDetailsScreen(
-              image: image, title: title, authorName: authorName, price: price, rating: rating,
-            )));
+            builder: (context)=>const BookDetailsScreen()));
       },
       child: SizedBox(
         height: MediaQuery.of(context).size.height*0.22,
@@ -31,7 +26,7 @@ class BestSellerListViewItem extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16),
             child: CachedNetworkImage(
-              imageUrl: image,
+              imageUrl: book.image ?? "",
               fit: BoxFit.fill,
             ),
           ),
@@ -42,21 +37,21 @@ class BestSellerListViewItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                   Text(title,
+                   Text(book.title,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
                       style: Styles.textStyle24),
                   const SizedBox(height: 8,),
-                   Text(authorName,style: Styles.textStyle20,),
+                   Text(book.authorName!,style: Styles.textStyle20,),
                   const SizedBox(height: 8,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                       Text("$price€",style:Styles.textStyle22),
+                       const Text("free",style:Styles.textStyle22),
                       Row(
                         children: [
                           const Icon(Icons.star, color: Colors.yellow,),
-                          Text( (rating).toString(), style: Styles.textStyle20, ),                          Text("(2390)",style: Styles.textStyle20.copyWith(color: Colors.grey),)
+                          Text( (book.rating).toString(), style: Styles.textStyle20, ),                          Text("(2390)",style: Styles.textStyle20.copyWith(color: Colors.grey),)
                         ],
                       )
                     ],

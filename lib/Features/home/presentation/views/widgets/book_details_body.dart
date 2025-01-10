@@ -7,17 +7,7 @@ import 'custom_book_image.dart';
 
 class BookDetailsBody extends StatelessWidget {
   const BookDetailsBody(
-      {super.key,
-      required this.image,
-      required this.title,
-      required this.authorName,
-      required this.price,
-      required this.rating});
-  final String image;
-  final String title;
-  final String authorName;
-  final num price;
-  final num rating;
+      {super.key,});
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -37,16 +27,16 @@ class BookDetailsBody extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: width * 0.25),
                   child: ClipRRect(
                       borderRadius: BorderRadius.circular(22),
-                      child: CachedNetworkImage(imageUrl: image))
+                      child: CachedNetworkImage(imageUrl: ""))
                 ),
                 SizedBox(
                   height: height * 0.05,
                 ),
-                Text(title, style: Styles.textStyle24),
+                Text("title", style: Styles.textStyle24),
                 SizedBox(
                   height: height * 0.01,
                 ),
-                Text(authorName, style: Styles.textStyle20),
+                Text("authorName", style: Styles.textStyle20),
                 SizedBox(
                   height: height * 0.01,
                 ),
@@ -57,7 +47,7 @@ class BookDetailsBody extends StatelessWidget {
                       Icons.star,
                       color: Colors.yellow,
                     ),
-                    Text(rating.toString(), style: Styles.textStyle20),
+                    Text("rating".toString(), style: Styles.textStyle20),
                     Text(
                       "(2390)",
                       style: Styles.textStyle20.copyWith(color: Colors.grey),

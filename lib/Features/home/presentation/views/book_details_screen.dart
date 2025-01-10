@@ -3,18 +3,8 @@ import 'package:flutter/material.dart';
 
 class BookDetailsScreen extends StatelessWidget {
   const BookDetailsScreen(
-      {super.key,
-      required this.image,
-      required this.title,
-      required this.authorName,
-      required this.price,
-      required this.rating});
+      {super.key,});
 
-  final String image;
-  final String title;
-  final String authorName;
-  final num price;
-  final num rating;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,13 +34,7 @@ class BookDetailsScreen extends StatelessWidget {
           )
         ],
       ),
-      body:  BookDetailsBody(
-        image: image,
-        title: title,
-        authorName: authorName,
-        price: price,
-        rating: rating,
-      ),
+      body:  const BookDetailsBody(),
     );
   }
 }

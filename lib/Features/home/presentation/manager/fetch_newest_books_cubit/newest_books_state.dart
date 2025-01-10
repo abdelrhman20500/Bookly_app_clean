@@ -1,14 +1,27 @@
-import 'package:bookly_app_clean/Features/home/domain/entities/book_entity.dart';
+import '../../../domain/entities/book_entity.dart';
 
-abstract class NewestBooksState{}
-class NewestBooksInitial extends NewestBooksState{}
-class NewestBooksLoading extends NewestBooksState{}
-class NewestBooksFailure extends NewestBooksState{
-  final String errMessage ;
-  NewestBooksFailure(this.errMessage);
+abstract class NewestBooksState {}
+
+class NewestBooksInitial extends NewestBooksState {}
+
+class NewestBooksPaginationLoading extends NewestBooksState {}
+
+class NewestBooksPaginationFailure extends NewestBooksState {
+  final String errMessage;
+
+  NewestBooksPaginationFailure(this.errMessage);
 }
-class NewestBooksSuccess extends NewestBooksState{
-  final List<BookEntity>books;
-  NewestBooksSuccess(this.books);
 
+class NewestBooksLoading extends NewestBooksState {}
+
+class NewestBooksSuccess extends NewestBooksState {
+  final List<BookEntity> books;
+
+  NewestBooksSuccess(this.books);
+}
+
+class NewestBooksFailure extends NewestBooksState {
+  final String errMessage;
+
+  NewestBooksFailure(this.errMessage);
 }

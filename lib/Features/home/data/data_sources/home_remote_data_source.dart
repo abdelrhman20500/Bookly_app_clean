@@ -6,7 +6,7 @@ import 'package:bookly_app_clean/constants.dart';
 
 abstract class HomeRemoteDateSource{
   Future<List<BookEntity>> fetchFeaturedBooks({int pageNumber=0});
-  Future<List<BookEntity>> fetchNewestBooks();
+  Future<List<BookEntity>> fetchNewestBooks({int pageNumber=0});
 }
 
 class HomeRemoteDataSourceImpl extends HomeRemoteDateSource{
@@ -26,8 +26,10 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDateSource{
 
 
   @override
-  Future<List<BookEntity>> fetchNewestBooks() async{
-    var data = await apiService.get(endpoint: "volumes?Filtering=free-ebooks&q=computerScience&Sorting=newest");
+  Future<List<BookEntity>> fetchNewestBooks({int pageNumber=0}) async{
+    var data = await apiService.get(
+        endpoint:
+        'volumes?Filtering=free-ebooks&q=novels&Sorting=newest&startIndex=${pageNumber * 10}');
     List<BookEntity> books = getBookList(data);
     /// you stored data in hive to used in local data source after fetch data ..
     saveBooksData(books, kNewestBox);

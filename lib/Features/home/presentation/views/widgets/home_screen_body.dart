@@ -29,10 +29,10 @@ class HomeScreenBody extends StatelessWidget {
               ),
             ),
         ),
-        const SliverFillRemaining(
+        SliverToBoxAdapter(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: BestSellerListViewBlocBuilder(),
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: BestSellerListViewBlocConsumer(),
           ),
         )
       ],
